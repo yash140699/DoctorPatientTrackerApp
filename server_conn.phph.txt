@@ -1,0 +1,23 @@
+<?php
+$servername = "localhost";
+$username = "id11493675_doctor";
+$password = "3002016122";
+$database="id11493675_doctor_patient";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "connected";
+$s="INSERT INTO `doctor`(`name`, `address`, `mobile_number`, `expert`, `experience`) VALUES ('d','c','b','a',2)";
+$d=mysqli_query($conn,$s);
+echo $s;
+if($d===TRUE){
+    echo "inserted";
+}
+else {
+    echo "not inserted";
+}
+?>
