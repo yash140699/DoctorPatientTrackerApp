@@ -1,0 +1,237 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: May 03, 2020 at 09:31 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `id11493675_doctor_patient`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appoinment`
+--
+
+CREATE TABLE `appoinment` (
+  `a_id` int(11) NOT NULL,
+  `p_name` varchar(150) NOT NULL,
+  `adhaar_no` int(11) DEFAULT NULL,
+  `d_name` varchar(100) DEFAULT NULL,
+  `visit_date` date DEFAULT NULL,
+  `visit_time` time NOT NULL,
+  `reason` varchar(150) DEFAULT NULL,
+  `previously` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appoinment`
+--
+
+INSERT INTO `appoinment` (`a_id`, `p_name`, `adhaar_no`, `d_name`, `visit_date`, `visit_time`, `reason`, `previously`) VALUES
+(1, '', 123, NULL, NULL, '00:00:00', NULL, ''),
+(132, 'adfds', 4, 'rawat', '2018-12-12', '00:59:00', '1', 'No'),
+(133, 'rawat', 123, 'yash', '2019-12-31', '12:59:00', 'qwr', 'Yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor`
+--
+
+CREATE TABLE `doctor` (
+  `d_id` int(11) NOT NULL,
+  `name` char(100) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `mobile_number` varchar(20) DEFAULT NULL,
+  `expert` varchar(50) DEFAULT NULL,
+  `experience` int(11) DEFAULT NULL,
+  `password` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`d_id`, `name`, `address`, `mobile_number`, `expert`, `experience`, `password`) VALUES
+(13, 'yash', 'asdf, asdf', '09950328088', 'yash@rawat.com', 2, '123'),
+(15, 'rawat', 'asdf', '123', '1', 1, '123'),
+(16, 'Batul', 'Shdh', '56565', 'Chfhd', 5656, '123'),
+(17, 'd', 'c', 'b', 'a', 2, NULL),
+(18, 'd', 'c', 'b', 'a', 2, NULL),
+(19, 'd', 'c', 'b', 'a', 2, NULL),
+(20, 'd', 'c', 'b', 'a', 2, NULL),
+(21, 'd', 'c', 'b', 'a', 2, NULL),
+(22, 'd', 'c', 'b', 'a', 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medication`
+--
+
+CREATE TABLE `medication` (
+  `m_id` int(11) NOT NULL,
+  `p_id` int(11) DEFAULT NULL,
+  `d_id` int(11) DEFAULT NULL,
+  `m_name` varchar(50) DEFAULT NULL,
+  `m_time` time DEFAULT NULL,
+  `quantity` varchar(20) DEFAULT NULL,
+  `days` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient`
+--
+
+CREATE TABLE `patient` (
+  `p_id` int(11) NOT NULL,
+  `d_id` int(11) DEFAULT NULL,
+  `name` char(150) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `mobile_number` varchar(20) DEFAULT NULL,
+  `aadhar_number` varchar(20) DEFAULT NULL,
+  `sex` varchar(50) DEFAULT NULL,
+  `email` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patient`
+--
+
+INSERT INTO `patient` (`p_id`, `d_id`, `name`, `address`, `mobile_number`, `aadhar_number`, `sex`, `email`) VALUES
+(1, 0, 'hj', 'd', '1', '-1', '', 'rawatyash140699@gmail.com'),
+(9, 13, 'Rice', 'd', '213', '213', 'female', 'rawatyash140699@gmail.com'),
+(10, 13, 'asdf', 'd', '213', '213', 'male', 'rawatyash140699@gmail.com'),
+(11, 13, 'asdf', 'd', '213', '213', 'male', 'rawatyash140699@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report`
+--
+
+CREATE TABLE `report` (
+  `r_id` int(11) NOT NULL,
+  `d_id` int(11) DEFAULT NULL,
+  `p_id` int(11) DEFAULT NULL,
+  `report_type` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `upload`
+--
+
+CREATE TABLE `upload` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `report_name` varchar(150) NOT NULL,
+  `size` int(11) NOT NULL,
+  `downloads` int(11) NOT NULL,
+  `adhaar` int(12) NOT NULL,
+  `d_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `upload`
+--
+
+INSERT INTO `upload` (`id`, `name`, `report_name`, `size`, `downloads`, `adhaar`, `d_name`) VALUES
+(51, 'rawat', 'MajorPJFrontPage(1).pdf', 178343, 0, 123, 'yash'),
+(52, 'yash', 'Full Motion.pdf', 46165, 0, 123, 'yash'),
+(53, 'adsfa', 'MajorPJFrontPage(1).pdf', 178343, 0, 123, 'yash'),
+(54, 'asdf', 'Full Motion.pdf', 46165, 0, 123, 'yash'),
+(56, 'yash', 'Full Motion.pdf', 46165, 0, 213, 'yash'),
+(57, 'test', 'MajorPJFrontPage(1).pdf', 178343, 0, 213, 'yash');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  ADD PRIMARY KEY (`a_id`);
+
+--
+-- Indexes for table `doctor`
+--
+ALTER TABLE `doctor`
+  ADD PRIMARY KEY (`d_id`);
+
+--
+-- Indexes for table `medication`
+--
+ALTER TABLE `medication`
+  ADD PRIMARY KEY (`m_id`);
+
+--
+-- Indexes for table `patient`
+--
+ALTER TABLE `patient`
+  ADD PRIMARY KEY (`p_id`);
+
+--
+-- Indexes for table `report`
+--
+ALTER TABLE `report`
+  ADD PRIMARY KEY (`r_id`);
+
+--
+-- Indexes for table `upload`
+--
+ALTER TABLE `upload`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appoinment`
+--
+ALTER TABLE `appoinment`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `upload`
+--
+ALTER TABLE `upload`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
